@@ -1,3 +1,6 @@
+from itertools import chain
+
+
 class Instrumento():
     def tocar_individual(self):
         raise NotImplementedError('Deve ser implementado')
@@ -39,10 +42,10 @@ class OrquestraVirgula(Orquestra):
 class OrquestraSustenidaDupla(Orquestra):
     def tocar(self):
         sons = []
-        for i in self.instrumentos:
-            for x in range(4):
-                sons.append(i.tocar_individual())
-        return ' # '.join(sons)
+        for i, i2 in zip(self.instrumentos, self.instrumentos):
+            sons.append(i.tocar_individual())
+            sons.append(i2.tocar_individual())
+        return ' # '.join(i.tocar_individual() for i in chain(self.instrumentos, self.instrumentos))
 
 
 orquestra = OrquestraSustenidaDupla()
