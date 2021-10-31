@@ -3,6 +3,6 @@ class Pessoa:
         return f'Olá'
 
 
-if if __name__ == '__main__':
+if __name__ == '__main__':
     p = Pessoa()
     print(p.cumprimentar())
